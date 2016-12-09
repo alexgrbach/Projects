@@ -1,0 +1,5 @@
+OrderNumber,CustomerName,StateKey,ProductKey,Area
+1,Alex Grbach,OH,Wood,100
+2,Zack McButters,MI,Wood,754
+3,Billy Boogerface,OH,Tile,100
+4,I am Lord Lord...Lord...Lord...,MI,Wood,1000

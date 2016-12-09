@@ -1,0 +1,5 @@
+OrderNumber,CustomerName,StateKey,ProductKey,Area
+1,Stellie Dan,OH,Wood,100
+2,Woodie Allen,PA,Laminate,72
+3,Jerry Garcia,MI,Tile,188
+4,Red Forman,OH,Carpet,50

@@ -1,0 +1,18 @@
+﻿@model BarBlog.Models.Tag
+@{
+    ViewBag.Title = "DeleteTag";
+}
+
+<h2>DeleteTag</h2>
+
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.TagID)
+            <p>Are you sure you want to delete the Category "@Html.DisplayFor(m => m.TagName)"?</p>
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "tagIndex", "Tag", null, new { @class = "btn btn-sm btn-info" })
+        }
+    </div>
+</div>

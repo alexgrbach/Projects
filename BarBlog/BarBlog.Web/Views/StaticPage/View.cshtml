@@ -1,0 +1,29 @@
+﻿@model BarBlog.Models.StaticPage
+
+    @{
+        ViewBag.Title = "ViewStaticPage";
+    }
+
+ <div class="panel panel-primary staticpage">
+     <div class="panel-heading staticpage-heading">
+         @Html.HiddenFor(m=>m.PageID)
+         <h2> @Model.PageTitle</h2>
+         <h5>@Model.PageDate.ToShortDateString()</h5>
+     </div>
+     <div class="panel-body staticpage-body">
+         @Html.Raw(Model.PageBody)
+     </div>         
+
+        @if (User.IsInRole("Admin"))
+        {  
+            <div class="staticpage-buttons">
+                <a class="btn btn-danger" href="/StaticPage/DeletePage/@Model.PageID">Delete</a>
+                <a class="btn btn-danger" href="/StaticPage/EditPage/@Model.PageID">Edit</a>
+            </div>
+        }
+ </div>
+
+@section styles{
+   <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    }

@@ -1,0 +1,14 @@
+﻿@model BarBlog.Models.Tag
+@{
+    ViewBag.Title = "CreateTag";
+}
+
+<h2>CreateTag</h2>
+<div class="row" id="pageform">
+    @using (Html.BeginForm("CreateTag", "Tag", null, FormMethod.Post, new { id = "tagform" }))
+    {
+        @Html.TextBoxFor(m => m.TagName, new { @class = "form-control" })
+        @Html.ActionLink("Cancel", "TagIndex", "Tag", null, new { @class = "btn btn-sm btn-primary" })
+        <button type="submit" class="btn btn-sm btn-secondary" id="savepost">Save</button>
+    }
+</div>

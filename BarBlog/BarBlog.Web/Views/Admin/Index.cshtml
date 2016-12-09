@@ -1,0 +1,42 @@
+﻿
+@model List<BarBlog.Models.Post>
+@{
+    ViewBag.Title = "Index";
+}
+
+@section styles{
+    <link href="~/Content/bootstrap-drawer.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+}
+
+@section drawerControls{
+    <a href="#searchDrawer" type="button" id="searchBtn" class="btn navbar-btn" data-toggle="drawer" aria-foldedopen="false" aria-controls="searchDrawer"><i class="fa fa-search" aria-hidden="true"></i></a>
+}
+
+<div class="has-inner-drawer" ng-app="BlogPostsApp">
+    <div ng-controller="BlogPostsController">
+
+        @Html.Partial("_BlogPostsPartial")
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/angular.min.js"></script>
+    <!--Load ng-sanitize from google cdn so html can be injected into the page with angular-->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/drawer.min.js"></script>
+    <script src="~/Scripts/dirPagination.js"></script>
+    <script src="~/Scripts/App/CategorySelector.js"></script>
+    <script src="~/Scripts/App/IndexFilterScripts.js"></script>
+    <script src="~/Scripts/App/DisplayBlogPosts.js"></script>
+}
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Regular Bar Reviews</title>
+    @RenderSection("styles", required: false)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Scripts/FontAwesome/css/font-awesome.css" rel="stylesheet" />
+    <!--Style Sheet is injected here-->
+    <link class="theme" rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Regular Bar Reviews", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @RenderSection("drawerControls", required: false)
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @*@if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Admin Mode", "Index", "Home")</li>
+                    }
+                    @if (User.IsInRole("Manager"))
+                    {
+                        <li>@Html.ActionLink("Manager Mode", "SubordinateIndex", "Subordinate")</li>
+                    }*@
+
+                    <!--staticPageDropdown-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            Information Pages <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="staticPageDropdown">
+                            <!--Populated by loadPages() in LayoutScritps-->
+                        </ul>
+                    </li>
+                    <!--End staticPageDropdown-->
+                    <!--Theme Switcher Dropdown-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            Theme Picker <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="themeSwitcher">
+                            <!--Themes to be switched between with ThemePicker() in LayoutScritps-->
+                            <li><a href="#" rel="~/Content/Site.css">Alex's Generic Bar</a></li>
+                            <li><a href="#" rel="~/Content/ThemeSwitcher/RavinWithDoug.css">Club Dougie Fresh</a></li>
+                            <li><a href="#" rel="/Content/ThemeSwitcher/BlueLight.css">Jazzy Dan's</a></li>
+                            <!--End Themes-->
+                        </ul>
+                    </li>
+                    <!--End themeSwitcher Dropdown-->
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <footer class="container">
+        <p>&copy; @DateTime.Now.Year - Team Null</p>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/App/LayoutScripts.js"></script>
+    @RenderSection("blogPostScripts", false)
+    @RenderSection("scripts", required: false)
+</body>
+</html>

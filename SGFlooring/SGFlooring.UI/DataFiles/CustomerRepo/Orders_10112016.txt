@@ -1,0 +1,4 @@
+OrderNumber,CustomerName,StateKey,ProductKey,Area
+2,Snoop Dog,PA,Laminate,72
+3,Atticus Finch,MI,Tile,188
+4,Billy Bob Thorton,IN,Carpet,50

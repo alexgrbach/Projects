@@ -1,0 +1,22 @@
+﻿@model BarBlog.Models.Post
+@{
+    ViewBag.Title = "Post";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        @*@Html.HiddenFor(m=>m.PostID)*@
+        <h3> @Model.PostTitle</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <h3>@Model.PostTitle</h3>
+            <p>@Model.PostDate.ToShortDateString()</p>
+        </div>
+        <div class="row">
+            <p>@Html.Raw(Model.PostBody)</p>
+        </div>
+
+    </div>
+</div>
+

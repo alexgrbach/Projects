@@ -1,0 +1,58 @@
+﻿@using BarBlog.Models
+@model BarBlog.Models.Post
+
+<div id="PostForm">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Post
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true, "Validation Errors")
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PostTitle)
+                    @Html.TextBoxFor(m => m.PostTitle)
+                    @Html.ValidationMessageFor(m => m.PostTitle)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PostBody)
+                    @Html.TextAreaFor(m => m.PostBody, new {id = "tinyMCE"})
+                    @Html.ValidationMessageFor(m => m.PostBody)
+                </div>
+                
+                <div class="form-group">
+                    <label>Tags:</label>
+                    @Html.TextBoxFor(m => m.placeholderText, new {id = "tagsList"})
+                </div>
+                <div class="form-group">
+                    
+                    @Html.Label("Post Category")
+
+                    <select name="PostCategory.CategoryID" id="categoryID">
+                       
+                    </select>
+                    <div class="form-group">
+                        <label>Post Status:</label>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.EnumDropDownListFor(m => m.Status)
+                        }
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-secondary">Save</button>
+                </div>
+                
+
+            }
+            
+
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/App/PostValidation.js"></script>
+}
+

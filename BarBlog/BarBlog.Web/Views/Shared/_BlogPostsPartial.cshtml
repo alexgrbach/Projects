@@ -1,0 +1,108 @@
+﻿<!--Uses drawer.min.js-->
+<!--drawer.js is written to be mobile first in the bootstrap style. Different column widths can be set in the same syntax as bootstrap columns-->
+<div id="searchDrawer" class="drawer drawer-inside dw-xs-8 dw-sm-4 dw-lg-3 fold drawer-right" aria-labelledby="searchDrawer">
+    <div class="drawer-contents">
+        <div class="drawer-heading">
+            <h2 class="drawer-title test">Filter Posts</h2>
+        </div>
+        <div class="drawer-body">
+
+            <div class="input-group">
+                <div><label for="query">Search: </label></div>
+                <!--ng-model="<name>" is how the text box is binded to the angualr app so it can be referecned with $scope.<name>-->
+                <div><input id="query" type="text" ng-model="query" /></div>
+            </div>
+
+            <div class="input-group">
+                <div><label for="categoryName">Filter by category</label></div>
+                <div>
+                    <select name="PostCategory.CategoryID" id="categoryName" ng-model="PostCategory">
+                        <option value="">None</option>
+                    </select>
+                </div>
+            </div>
+
+            @*<div class="input-group">
+                <label for="tagName">Filter by tag</label>
+                <form id="tagName"></form>
+            </div>*@
+
+            @*<label>Filter by dates</label>
+                <!--Datepicker plugin. configured in the poorly named IndexFilterScripts.js-->
+                <div class="input-daterange input-group" id="datepicker">
+                    <input type="text" class="input-sm form-control" name="start" ng-model="startDate" />
+                    <span class="input-group-addon">to</span>
+                    <input type="text" class="input-sm form-control" name="end" ng-model="endDate" />
+                </div>
+                <!--End Datepicker-->*@
+
+            <div class="input-group">
+                <label for="pageSize">Items per page:</label>
+                <input id="pageSize" type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+            </div>
+        </div>
+        <div class="drawer-footer">
+            <div><small>Guild you will be missed!</small></div>
+            <div><small>So long and thanks for all the fish!</small></div>
+            <div><small><i class="fa fa-heart faa-pulse animated faa-fast" aria-hidden="true"></i> Alex</small></div>
+        </div>
+    </div>
+</div>
+<!--End searchDrawer-->
+<div id="post_body">
+    <div class="jumbotron" id="jumbotron-home">
+        <h1>Regular Bar Reviews</h1>
+    </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div id="buttonBorder">
+            <span>@Html.ActionLink("New Post", "CreatePost", "Admin", null, new { @class = "btn btn-sm btn-primary" })</span>
+            <span>@Html.ActionLink("New Page", "CreatePage", "StaticPage", null, new { @class = "btn btn-sm btn-primary" })</span>
+            <span>@Html.ActionLink("View Categories", "CategoryIndex", "Category", null, new { @class = "btn btn-sm btn-primary" })</span>
+            <span>@Html.ActionLink("View Tags", "TagIndex", "Tag", null, new { @class = "btn btn-sm btn-primary" })</span>
+        </div>
+    }
+    @if (User.IsInRole("Manager"))
+    {
+        <div id="buttonBorder">
+            @Html.ActionLink("New Post", "CreatePost", "Subordinate", null, new { @class = "btn btn-sm btn-primary" })
+        </div>
+    }
+    <div id="BlogPosts">
+        <!--dir-paginate is used in place of ng-repeat-->
+        <div class="BlogPost test" dir-paginate="post in BlogPosts | filter: {PostTags: {TagName: tag.key}} | filter: PostCategory | filter: search  | orderBy:'PostDate':true | itemsPerPage: pageSize" current-page="currentPage" pagination-id="lol">
+            <h3>{{post.PostCategory.CategoryName}}: {{post.PostTitle}}</h3>
+            <h6>{{post.PostDate | date:"MM/dd/yyyy"}}</h6>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <h6>Status: {{post.Status}}</h6>
+            }
+            
+            <div ng-bind-html="post.PostBody"></div>
+            <div id="tags">
+                Tagged as:
+                <span ng-repeat="tag in post.PostTags | orderBy:'TagName'">
+                    <span>{{tag.TagName}}</span>
+                </span>
+            </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <div id="AdminButtons">
+                    <a class="btn btn-sm btn-danger" href="/Admin/DeletePost/{{post.PostID}}">Delete</a>
+                    <a class="btn btn-sm btn-danger" href="/Admin/EditPost/{{post.PostID}}">Edit</a>
+                </div>
+            } 
+        </div>          
+    </div>
+
+    
+    <!--Center is bad m'kay-->
+    <!--To keep up with modern html standards elements on a page should be positioned with CSS-->
+    <!--To save some time the center was used here since centering an element on a page can prove to be diffucult at times-->
+    <center>
+        <!--This is the pretty page switcher  that show up at the bottom of the page-->
+        <!--Everything is handled by the plugin-->
+        <!--The html is injected from the template-url blow-->
+        <dir-pagination-controls boundary-links="true" pagination-id="lol" on-page-change="pageChangeHandler(newPageNumber)" template-url="/Scripts/App/dirPagination.tpl.html"></dir-pagination-controls>
+    </center>
+</div><!--End post_body-->

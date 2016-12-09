@@ -1,0 +1,99 @@
+﻿@model List<BarBlog.Models.Post>
+@{
+    ViewBag.Title = "SubordinateIndex";
+}
+
+<h2>SubordinateIndex</h2>
+
+
+
+@section styles{
+    <link href="~/Content/bootstrap-drawer.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+}
+
+@section drawerControls{
+    <a href="#searchDrawer" type="button" id="searchBtn" class="btn navbar-btn" data-toggle="drawer" aria-foldedopen="false" aria-controls="searchDrawer"><i class="fa fa-search" aria-hidden="true"></i></a>
+}
+
+<div class="has-inner-drawer" ng-app="BlogPostsApp">
+    <div ng-controller="BlogPostsController">
+        <div id="searchDrawer" class="drawer drawer-inside dw-xs-8 dw-sm-4 dw-lg-3 fold drawer-right" aria-labelledby="searchDrawer">
+
+            <div class="drawer-contents">
+                <div class="drawer-heading">
+                    <h2 class="drawer-title test">Filter Posts</h2>
+                </div>
+                <div class="drawer-body">
+                    <label>Search</label>
+                    <div><input type="text" ng-model="query" /></div>
+                    <label>Filter by dates</label>
+                    <div class="input-daterange input-group" id="datepicker">
+                        <input type="text" class="input-sm form-control" name="start" ng-model="startDate" />
+                        <span class="input-group-addon">to</span>
+                        <input type="text" class="input-sm form-control" name="end" ng-model="endDate" />
+                    </div>
+                    <div>
+                        <label for="search">items per page:</label>
+                        <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+                    </div>
+                </div>
+                <div class="drawer-footer">
+                    <small>Null - Regular Bar Reviews </small>
+                </div>
+            </div>
+        </div>
+        <div id="post_body">
+            <div class="jumbotron" id="jumbotron-home">
+                <h1>Regular Bar Reviews</h1>
+                @*<p class="lead">This is a blag</p>*@
+            </div>
+            <div class="buttonBorder">
+                @Html.ActionLink("New Post", "CreatePost", "Subordinate", null, new { @class = "btn-lg btn-primary" })
+               
+            </div>
+            <div id="BlogPosts">
+                <div class="BlogPost test" dir-paginate="post in BlogPosts | filter: search | orderBy:'PostDate':true | itemsPerPage: pageSize" current-page="currentPage" pagination-id="lol">
+                    <h3>{{post.PostTitle}}</h3>
+                    <h6>{{post.PostDate | date:"MM/dd/yyyy"}}</h6>
+
+                    <div ng-bind-html="post.PostBody"></div>
+                    <div id="tags">
+                        Tagged as:
+                        <span ng-repeat="tag in post.PostTags | filter: {tag: TagName} | orderBy:'TagName'">
+                            <span>{{tag.TagName}}</span>
+                        </span>
+                    </div>
+                    @*<div id="sharebar">
+                            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world" data-size="large"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </div>*@
+                    @*<div>
+                        <a class="btn btn-danger" href="/Admin/DeletePost/{{post.PostID}}">Delete</a>
+                        <a class="btn btn-danger" href="/Admin/EditPost/{{post.PostID}}">Edit</a>
+                    </div>*@
+                </div>
+
+            </div>
+            <center>
+                <dir-pagination-controls boundary-links="true" pagination-id="lol" on-page-change="pageChangeHandler(newPageNumber)" template-url="/Scripts/App/dirPagination.tpl.html"></dir-pagination-controls>
+            </center>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="~/Scripts/dirPagination.js"></script>
+    <script src="~/Scripts/drawer.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/App/DisplayBlogPosts.js"></script>
+    <script src="~/Scripts/App/IndexFilterScripts.js"></script>
+}

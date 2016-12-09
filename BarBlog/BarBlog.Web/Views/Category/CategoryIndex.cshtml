@@ -1,0 +1,33 @@
+﻿@model List<BarBlog.Models.Category>
+@{
+    ViewBag.Title = "CategoryIndex";
+}
+
+<h2>CategoryIndex</h2>
+<div class="buttonBorder">
+    @Html.ActionLink("New Category", "CreateCategory", "Category", null, new { @class = "btn-lg btn-primary" })
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                Category
+            </td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>
+                @category.CategoryName
+            </td>
+            <td>
+                @Html.ActionLink("Rename", "EditCategory", "Category", new {Id = category.CategoryID}, null) @*|
+                @Html.ActionLink("Delete", "DeleteCategory", "Category", new {Id = category.CategoryID}, null)*@
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

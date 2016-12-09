@@ -1,0 +1,21 @@
+﻿@model BarBlog.Models.Category
+@{
+    ViewBag.Title = "EditCategory";
+}
+
+<h2>EditCategory</h2>
+
+<div class="row">
+    @using (Html.BeginForm("EditCategory", "Category", null, FormMethod.Post, new { id = "categoryform" }))
+    {
+        @Html.HiddenFor(m=>m.CategoryID);
+        @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+        @Html.ActionLink("Cancel", "CategoryIndex", "Category", null, new { @class = "btn btn-sm btn-primary" })
+        <button type="submit" class="btn btn-secondary" id="savepost">Save</button>
+    }
+</div>
+
+@section scripts{
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/App/tinymcecontrol.js"></script>
+}

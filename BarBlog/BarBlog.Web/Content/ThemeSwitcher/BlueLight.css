@@ -1,0 +1,205 @@
+﻿/*Color palette 
+    blue: rgb(33,96,164)
+    rgb(0, 56, 168)
+    White
+    dark gray: rgb(29,29,29)
+    gold: rgb(255, 223, 0);
+*/
+
+body {
+    background-color: rgb(29,29,29);
+    color: white;
+}
+
+.container.body-content{
+/*    color: white;
+*/    border-left: solid 10px rgb(0, 56, 168);
+    padding-left: 10px;
+}
+
+a{
+    color: rgb(255, 223, 0);
+}
+
+a:hover, a:active{
+    color: rgb(255,255,0);
+}
+
+/*blag*/
+
+.BlogPost{
+    border: none;
+    color: white;
+}
+
+.BlogPost > h3{
+    border-bottom: solid 3px rgb(0, 56, 168);
+    color: rgb(255, 223, 0);
+    /*font-family: 'Audiowide', cursive;*/
+    font-family: 'Poiret One', cursive;
+    font-size: 4em;
+    /*letter-spacing: 3px;*/
+}
+.BlogPost > h6{
+    color: gray;
+}
+
+.BlogPost > #tags{
+    color: rgb(0, 191, 255);
+}
+
+footer > p{
+    border-top: solid 4px rgb(0, 56, 168);
+    color: white;   
+}
+
+
+/*jumobtron*/
+
+#jumbotron-home > h1{  
+    color: rgb(0, 56, 168);
+    -webkit-text-stroke-color: rgb(0, 56, 168);
+    border-color: rgb(0, 56, 168);
+    background-color: rgba(255,255,255,0.8);
+    
+
+}
+
+#jumbotron-home {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    background-image: url('../../img/jazzjumbotron.jpg');
+    background-position: top;
+}
+
+
+/*pagination*/
+/*enabled*/
+.pagination > li > a, .pagination > li > span{
+    background-color: transparent;
+    border-color: rgb(0, 56, 168);
+    color: rgb(255, 223, 0);
+}
+
+/*enabled hover*/
+.pagination > li > a:hover, .pagination > li > span:hover{
+    background-color: rgba(0, 56, 168,0.2);
+    border-color: rgb(0, 56, 168);
+    color: rgb(255,255,0);
+}
+
+/*disabled*/
+.pagination > .disabled > span, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus{
+    background-color: transparent;
+    border-color: rgb(0, 56, 168);
+    color: gray;
+}
+
+
+/*active*/
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+    background-color: rgb(0, 56, 168);
+    border-color: rgb(0, 56, 168);
+    color: white;
+}
+
+
+
+/*Static Pages*/
+
+.panel-heading.staticpage-heading{
+    background-color: rgb(255,102,0);
+    border-radius: 7px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.panel-heading.staticpage-heading > h2{
+	font-size: 3em;
+	font-family: 'Poiret One', cursive;
+}
+
+
+
+.staticpage{
+    border-color: red;
+    border: solid 1px rgb(255, 223, 0);
+    box-shadow: none;
+    background-color: transparent;
+    border-radius-top: 10px;
+
+}
+
+.panel-body.staticpage-body{
+    border-top: solid 1px rgb(255, 223, 0);
+    border-color: none;
+
+    color: white;
+}
+
+.btn.btn-danger{
+    background-color: rgb(255,0,153);
+}
+
+.btn.btn-primary{
+    background-color: rgb(110,13,208);
+    border: 0;
+}
+.btn.btn-primary:hover{
+    background-color: rgba(110,13,208,0.7);
+    border: 0;
+}
+
+.staticpage-buttons{
+    border-top: solid 1px rgb(255, 223, 0);
+}
+
+
+/*validation*/
+
+.text-danger{
+    color: rgb(255,0,153);
+}
+
+.panel-body{
+    background-color: transparent;
+}
+
+.panel, .panel-primary{
+    background-color: transparent;
+}
+
+#pageform{
+    background-color: transparent;
+}
+
+.panel-primary > .panel-heading{
+	background-color: rgb(0, 56, 168);
+}
+.btn.btn-danger{
+	background-color: rgb(255, 223, 0);
+	border-color: rgb(255, 223, 0);
+	color: black;
+}
+.btn.btn-primary {
+    background-color: rgb(33,96,164);
+    border: 0;
+}
+.btn.btn-primary:hover {
+    background-color: rgba(255, 223, 0,0.7);
+    border: 0;
+}
+
+#AdminButtons{
+	border-top: solid 3px rgb(0, 56, 168);
+}
+table{
+	background-color: white;
+}
+h2{
+	color: white;
+}
+td{
+	color: black;
+}

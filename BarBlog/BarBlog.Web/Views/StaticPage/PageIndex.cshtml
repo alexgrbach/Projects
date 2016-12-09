@@ -1,0 +1,30 @@
+﻿@model List<BarBlog.Models.StaticPage>
+@{
+    ViewBag.Title = "PageIndex";
+}
+
+<h2>PageIndex</h2>
+
+<div class="buttonBorder">
+    @Html.ActionLink("New Page", "CreatePage", "StaticPage", null, new { @class = "btn-lg btn-primary" })
+</div>
+<div id="BlogPosts">
+    <div class="row" ng-app="StaticPagesApp">
+        <div ng-controller="StaticPagesController">
+           <div class="BlogPost" ng-repeat="page in StaticPages">
+                <h3>{{page.PageTitle}}</h3>
+                <h6>{{page.PageDate | date:"MM/dd/yyyy 'at' h:mm a"}}</h6>
+                <div ng-bind-html="page.PageBody"></div>
+                <a class="btn btn-danger" href="/StaticPage/DeletePage/{{page.PageID}}">Delete</a>
+                <a class="btn btn-danger" href="/StaticPage/EditPage/{{page.PageID}}">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="~/Scripts/App/DisplayStaticPages.js"></script>
+}

@@ -1,0 +1,29 @@
+﻿@model List<BarBlog.Models.Tag>
+@{
+    ViewBag.Title = "TagIndex";
+}
+
+<h2>Tag Manager</h2>
+@Html.ActionLink("New Tag", "CreateTag", "Tag", null, new { @class = "btn-lg btn-primary" })
+<br/>
+<br/>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Tag Manager
+    </div>
+    <div class="panel-body">
+        @foreach (var tag in Model)
+        {
+            <div class="row">
+                <p>@tag.TagName
+                
+                    @Html.ActionLink("Rename", "EditTag", "Tag", new {id = tag.TagID}, null) |
+                    @Html.ActionLink("Delete", "DeleteTag", "Tag", new {id = tag.TagID}, null)
+                </p>
+            </div>
+
+        }
+    </div>
+</div>
+

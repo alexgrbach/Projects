@@ -1,0 +1,23 @@
+﻿@model BarBlog.Models.StaticPage
+@{
+    ViewBag.Title = "CreatePage";
+}
+
+<div class="row">
+    @using (Html.BeginForm("CreatePage", "StaticPage", null, FormMethod.Post, new { id = "pageform" }))
+    {
+        Html.RenderPartial("_StaticPageInputsPartial", Model);
+        <div id="pageButtons">
+            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-sm btn-primary" })
+        </div>
+        
+    }
+</div>
+
+@section scripts{
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+<script src="~/Scripts/App/tinymcecontrol.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/App/StaticPageValidation.js"></script>
+}
+

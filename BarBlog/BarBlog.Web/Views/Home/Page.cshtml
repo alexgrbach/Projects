@@ -1,0 +1,21 @@
+﻿@model BarBlog.Models.StaticPage
+
+@{
+    ViewBag.Title = "Page";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3> @Model.PageTitle</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <h3>@Model.PageTitle</h3>
+            <p>@Model.PageDate.ToShortDateString()</p>
+        </div>
+        <div class="row">
+            <p>@Html.Raw(Model.PageBody)</p>
+        </div>
+        
+    </div>
+</div>

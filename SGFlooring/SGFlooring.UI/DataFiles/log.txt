@@ -1,0 +1,2 @@
+10/17/2016 - 5:47 AM - Go into app.config and set mode either to PROD or TEST
+10/17/2016 - 5:49 AM - Go into app.config and set mode either to PROD or TEST

@@ -1,0 +1,27 @@
+﻿@model BarBlog.Models.Post
+@{
+    ViewBag.Title = "CreatePost";
+}
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+<link href="~/content/jquery.tagit.css" rel="stylesheet" />
+<div class="row">
+    @using (Html.BeginForm("CreatePost", "Admin", null, FormMethod.Post, new { id = "postform" }))
+    {
+        Html.RenderPartial("_BlogPostInputsPartial", Model);
+        <div id="pageButtons">
+            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-sm btn-primary" })
+        </div>
+    }
+</div>
+
+@section scripts{
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/App/tinymcecontrol.js"></script>
+    <script src="~/Scripts/App/CategorySelector.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.11.min.js"></script>
+    <script src="~/Scripts/App/PostValidation.js"></script>
+    <script src="~/scripts/tag-it.js"></script>
+    <script src="~/Scripts/App/TagScripts.js"></script>
+}
+
